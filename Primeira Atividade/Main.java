@@ -22,6 +22,8 @@ public class Main extends Applet {
      *   Cria mercurio.txt e netuno.txt com conteúdo de texto inofensivo.
      *   Renomeia para Imagen1.exe e msnwin32.exe (ainda arquivos de texto).
      *   Registra todas as etapas no console.
+     * 
+     *   Simular "execucao" dos binarios maliciosos (APENAS LOG, NAO EXECUTA NADA)
      */
     private static void executarSimulacaoDropper() {
         File sandboxDir = new File("sandbox_dropper");
@@ -57,7 +59,6 @@ public class Main extends Applet {
             System.out.println("Renomeacao mercurio.txt -> Imagen1.exe: " + renamed1);
             System.out.println("Renomeacao netuno.txt -> msnwin32.exe: " + renamed2);
 
-            // 3) Simular "execucao" dos binarios maliciosos (APENAS LOG, NAO EXECUTA NADA)
             System.out.println("[SIMULACAO] Aqui o malware real executaria Imagen1.exe e msnwin32.exe.");
             System.out.println("[SIMULACAO] Nesta prova de conceito, NENHUM executavel real e baixado ou executado.");
 
