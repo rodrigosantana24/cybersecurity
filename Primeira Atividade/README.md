@@ -1,4 +1,4 @@
-# Java Applet
+# Primeira Atividade - Java Applet
 
 Aviso Legal: Este projeto possui fins estritamente educacionais e acadêmicos. 
 
