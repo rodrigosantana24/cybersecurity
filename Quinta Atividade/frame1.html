@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frame 1</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 16px;
+    }
+    textarea {
+      width: 100%;
+      height: 180px;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Frame 1</h2>
+  <textarea id="textoFrame1" placeholder="Digite no frame 1"></textarea>
+  <button id="botaoFrame1" type="button">Copiar para o frame 2</button>
+
+  <script>
+    function copiarFrame1ParaFrame2() {
+      const frame2 = parent.frames["frame2"];
+      if (!frame2 || !frame2.document) return;
+
+      const origem = document.getElementById("textoFrame1");
+      const destino = frame2.document.getElementById("textoFrame2");
+      if (origem && destino) {
+        destino.value = origem.value;
+      }
+    }
+
+    function copiarFrame2ParaFrame1() {
+      const frame2 = parent.frames["frame2"];
+      if (!frame2 || !frame2.document) return;
+
+      const origem = frame2.document.getElementById("textoFrame2");
+      const destino = document.getElementById("textoFrame1");
+      if (origem && destino) {
+        destino.value = origem.value;
+      }
+    }
+
+    function conectarBotaoDoFrame2() {
+      const frame2 = parent.frames["frame2"];
+      if (!frame2 || !frame2.document) return false;
+
+      const botaoFrame2 = frame2.document.getElementById("botaoFrame2");
+      if (!botaoFrame2) return false;
+
+      botaoFrame2.onclick = copiarFrame2ParaFrame1;
+      return true;
+    }
+
+    document.getElementById("botaoFrame1").addEventListener("click", copiarFrame1ParaFrame2);
+
+    if (!conectarBotaoDoFrame2()) {
+      const tentativa = setInterval(() => {
+        if (conectarBotaoDoFrame2()) {
+          clearInterval(tentativa);
+        }
+      }, 100);
+    }
+  </script>
+</body>
+</html>
